@@ -21,8 +21,9 @@ namespace AHRS{
 	extern int16_t my;
 	extern int16_t mz; 
 
-	void init(float _sampleRate);
+	void init(float _sampleRate, float beta);
 	void read();
+	//void readAngle(float *roll, float *pitch, float *yaw);
 	float convertRawAcceleration(int aRaw);
 	float convertRawGyro(int gRaw);
 

@@ -15,10 +15,10 @@ namespace AHRS{
 	int16_t my;
 	int16_t mz;
 	Madgwick filter;
-	
-	void init(float _sampleRate){
+
+	void init(float _sampleRate, float beta){
 		
-		filter.begin(_sampleRate);
+		filter.begin(_sampleRate, beta);
 
 		MPU6000::init();
 		HMC5883::init();
@@ -65,6 +65,11 @@ namespace AHRS{
 		float a = (aRaw * 4.0) / 32768.0;
 		return a;
 	}
-
-
+/*
+	void readAngle(float *roll, float *pitch, float *yaw){
+		*roll = filter.getRoll();
+		*pitch = filter.getPitch();
+		*yaw = filter.getYaw();
+	}
+*/
 }
